@@ -54,20 +54,12 @@ namespace EmailForm.Controllers
                 var smtpClient = new SmtpClient("smtp.gmail.com")
                 {
                     Port = 587,
-                    Credentials = new NetworkCredential("hagar.elsherif999@gmail.com", "gtcqlqjfsjzctbsg"),
+                    Credentials = new NetworkCredential("hagar.elsherif999@gmail.com", "your app password"),
                     EnableSsl = true,
                   //  SmtpClient client = new SmtpClient();
                 DeliveryMethod = SmtpDeliveryMethod.Network,
-  //              EnableSsl = false,
-              // Host = "relay-hosting.secureserver.net",
-               // Port = 25
-                //csgsales@csgegypt.com
-                //UPLaZ5%CSG
+  
             };
-                //  ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
-                // {
-                //   return true;
-                //};
                 Attachment attachment = new Attachment(Uplodefile);
                 message.Attachments.Add(attachment);
 
