@@ -1,0 +1,62 @@
+﻿
+@model EmailForm.Models.EmailModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Emails form";
+}
+
+<style type="text/css">
+    .card mt-4 {
+        width: 100%;
+        text-align: center;
+        left: 50%;
+        width: 100%;
+        height: 80%;
+        /* -1/2 width */
+    }
+
+    .card-body {
+        padding-left: 30%;
+        width: 80%;
+    }
+</style>
+<div class="card mt-4">
+
+    <div class="card-body">
+        <!--<form asp-controller="Email" asp-action="Index" method="post" role="form">-->
+        @using (Html.BeginForm("Index", "Email", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <br />
+            <br />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Email" placeholder="Email" name="Email" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            
+            <br />
+            <div class="form-group">
+                <input asp-for="Subject" placeholder="Subject" name="Subject" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <div class="form-group">
+                <textarea asp-for="Content" placeholder="Content" name="Content" class="form-control" rows="5" cols="200"></textarea>
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.TextBox("file", "", new { type = "file" }) <br />
+                @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                <!--     <input type="submit" value="Upload" />-->
+                @ViewBag.Message
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success form-control btn-block">Save</button>
+            </div>
+        }
+        <!--</form>-->
+    </div>
+
+
+</div>
